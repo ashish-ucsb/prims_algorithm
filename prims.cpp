@@ -26,23 +26,25 @@ int Prims::minKey()
     return min_index;  
 }  
 
-void Prims::primMST()
+void Prims::primMST(int limit)
 {
-    for (int count = 0; count < V - 1; count++) 
+    int count = 0;
+    while(count <= limit)
     { 
         int u = minKey(); 
         mstSet[u] = true; 
         edges.push_back(make_pair(parent[u], u));
         for (int v = 0; v < V; v++) 
             if (graph[u][v] && mstSet[v] == false && graph[u][v] < key[v]) 
-                parent[v] = u, key[v] = graph[u][v]; 
+                parent[v] = u, key[v] = graph[u][v];
+        count++; 
     }
 }
 
-void Prims::printEdges() {
-    for (auto edge : edges) {
-        cout << edge.first << " " << edge.second << endl;
-    }
+void Prims::printEdges() 
+{
+    for (int i=1; i<edges.size(); i++)
+        cout << edges[i].first << " " << edges[i].second << endl;
 }
 
 void Prims::printGraph()

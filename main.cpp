@@ -30,6 +30,6 @@ int main(int argc, char* argv[])
 	getline(cin, skip);
 
 	Prims p(num_nodes, graph);
-	p.primMST();
+	p.primMST(4);
 	p.printEdges();
 } 

@@ -16,7 +16,7 @@ public:
     Prims(int num_nodes, vector< vector<int> > matrix);
     void printGraph();
     int minKey();
-    void primMST();
+    void primMST(int limit);
     void printEdges();
     
 };
