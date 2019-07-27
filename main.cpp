@@ -1,6 +1,5 @@
 #include<iostream> 
 #include <sstream>
-// #include<climits>
 #include<vector>
 #include <string>
 #include <bits/stdc++.h>
@@ -11,6 +10,9 @@ int main(int argc, char* argv[])
 {
 	int num_nodes;
 	cin >> num_nodes;
+
+	int one= (num_nodes-1)/2;
+	int two= (num_nodes+1)/2;
 
 	// second, read in the complete graph
 	vector< vector<int> > graph;
@@ -29,7 +31,27 @@ int main(int argc, char* argv[])
 	getline(cin, skip);
 	getline(cin, skip);
 
-	Prims p(num_nodes, graph);
-	p.primMST(4);
+	Prims p(num_nodes);
+	p.primMST(graph, one);
 	p.printEdges();
+	cout << endl;
+
+	for(string line; getline(cin, line) && line.compare(""); ) {
+	    stringstream ss(line);
+	    int from;
+	    int to;
+	    int cost;
+	    ss >> from;
+	    ss >> to;
+	    ss >> cost;
+
+	    graph[to][from] = graph[from][to] = cost;
+	  }
+
+	  p.primMST(graph, two);
+	  p.printEdges();
+
+	  // ...
+
+	  return 0;
 } 
