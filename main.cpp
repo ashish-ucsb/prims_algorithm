@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
 	cin >> num_nodes;
 
 	int one= (num_nodes-1)/2;
-	int two= (num_nodes+1)/2;
+	int two= num_nodes-1-one;
 
 	// second, read in the complete graph
 	vector< vector<int> > graph;
